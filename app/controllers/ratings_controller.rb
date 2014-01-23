@@ -8,6 +8,6 @@ class RatingsController < ApplicationController
   end
 
   def create
-  	params.require(:rating).permit(:score, :beer_id)
+    Rating.create params.require(:rating).permit(:score, :beer_id)
   end
 end
