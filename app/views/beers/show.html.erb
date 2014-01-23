@@ -24,14 +24,8 @@
  	beer has 
  	<%= @beer.ratings.count %>
  	ratings, average
-
- 	<% @total = 0%>
- 	<% @beer.ratings.each do |r| %>
- 		<% @total += r.score %>
- 	<% end %>
-
- 	<% @total /= @beer.ratings.count %>
- 	<%= @total %>
+	
+ 	<%= @beer.ratings.average 'score' %>
  </p>
 <% end %>
 
