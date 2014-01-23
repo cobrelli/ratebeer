@@ -1,0 +1,53 @@
+Tomis-MacBook-Pro:ratebeer cobu$ rails c
+Loading development environment (Rails 4.0.2)
+irb(main):001:0> b = Beer.new
+=> #<Beer id: nil, name: nil, style: nil, brewery_id: nil, created_at: nil, updated_at: nil>
+irb(main):002:0> r = Brewery.new
+=> #<Brewery id: nil, name: nil, year: nil, created_at: nil, updated_at: nil>
+irb(main):003:0> r.name = "BrewDog"
+=> "BrewDog"
+irb(main):004:0> r.year = 2007
+=> 2007
+irb(main):005:0> r.save
+   (0.1ms)  begin transaction
+  SQL (4.4ms)  INSERT INTO "breweries" ("created_at", "name", "updated_at", "year") VALUES (?, ?, ?, ?)  [["created_at", Thu, 23 Jan 2014 11:05:13 UTC +00:00], ["name", "BrewDog"], ["updated_at", Thu, 23 Jan 2014 11:05:13 UTC +00:00], ["year", 2007]]
+   (0.7ms)  commit transaction
+=> true
+irb(main):006:0> b
+=> #<Beer id: nil, name: nil, style: nil, brewery_id: nil, created_at: nil, updated_at: nil>
+irb(main):007:0> b.name="Punk IPA"
+=> "Punk IPA"
+irb(main):008:0> b.style = "IPA"
+=> "IPA"
+irb(main):009:0> b.save
+   (0.1ms)  begin transaction
+  SQL (8.2ms)  INSERT INTO "beers" ("created_at", "name", "style", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 23 Jan 2014 11:05:55 UTC +00:00], ["name", "Punk IPA"], ["style", "IPA"], ["updated_at", Thu, 23 Jan 2014 11:05:55 UTC +00:00]]
+   (0.8ms)  commit transaction
+=> true
+irb(main):010:0> r.beers << b
+   (0.1ms)  begin transaction
+  SQL (0.4ms)  UPDATE "beers" SET "brewery_id" = ?, "updated_at" = ? WHERE "beers"."id" = 22  [["brewery_id", 8], ["updated_at", Thu, 23 Jan 2014 11:06:04 UTC +00:00]]
+   (0.7ms)  commit transaction
+  Beer Load (0.1ms)  SELECT "beers".* FROM "beers" WHERE "beers"."brewery_id" = ?  [["brewery_id", 8]]
+=> #<ActiveRecord::Associations::CollectionProxy [#<Beer id: 22, name: "Punk IPA", style: "IPA", brewery_id: 8, created_at: "2014-01-23 11:05:55", updated_at: "2014-01-23 11:06:04">]>
+irb(main):011:0> b = Beer.new
+=> #<Beer id: nil, name: nil, style: nil, brewery_id: nil, created_at: nil, updated_at: nil>
+irb(main):012:0> b.name = "Nanny State"
+=> "Nanny State"
+irb(main):013:0> b.style = "lowalcohol"
+=> "lowalcohol"
+irb(main):014:0> b.save
+   (0.1ms)  begin transaction
+  SQL (0.5ms)  INSERT INTO "beers" ("created_at", "name", "style", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 23 Jan 2014 11:06:31 UTC +00:00], ["name", "Nanny State"], ["style", "lowalcohol"], ["updated_at", Thu, 23 Jan 2014 11:06:31 UTC +00:00]]
+   (7.9ms)  commit transaction
+=> true
+irb(main):015:0> r.beers << b
+   (0.1ms)  begin transaction
+  SQL (0.8ms)  UPDATE "beers" SET "brewery_id" = ?, "updated_at" = ? WHERE "beers"."id" = 23  [["brewery_id", 8], ["updated_at", Thu, 23 Jan 2014 11:06:37 UTC +00:00]]
+   (8.1ms)  commit transaction
+=> #<ActiveRecord::Associations::CollectionProxy [#<Beer id: 22, name: "Punk IPA", style: "IPA", brewery_id: 8, created_at: "2014-01-23 11:05:55", updated_at: "2014-01-23 11:06:04">, #<Beer id: 23, name: "Nanny State", style: "lowalcohol", brewery_id: 8, created_at: "2014-01-23 11:06:31", updated_at: "2014-01-23 11:06:37">]>
+irb(main):016:0> r.save
+   (0.1ms)  begin transaction
+   (0.1ms)  commit transaction
+=> true
+irb(main):017:0> 
