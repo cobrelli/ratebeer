@@ -22,5 +22,16 @@
  <% end %>
 </p>
 
+
+<% if @brewery.average_rating == 0 %>
+ <% else %>
+ <p>
+
+ 	
+
+ 	<%= @brewery.average_rating %>
+ </p>
+<% end %>
+
 <%= link_to 'Edit', edit_brewery_path(@brewery) %> |
 <%= link_to 'Back', breweries_path %>

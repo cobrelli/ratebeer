@@ -21,14 +21,7 @@
  </p>
 <% else %>
  <p>
-
- 	<% @str = "beer has " %> 
- 	
- 	<% @str += pluralize @beer.ratings.count, 'rating' %>
- 	
- 	<%= @str + ", average" %>
-
- 	<%= @beer.ratings.average 'score' %>
+ 	<%= @beer.average_rating %>
  </p>
 <% end %>
 
