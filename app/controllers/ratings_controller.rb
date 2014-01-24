@@ -14,4 +14,10 @@ class RatingsController < ApplicationController
     #yllättävää ;)
     #redirect_to "http://www.cs.helsinki.fi"
   end
+
+  def destroy
+    rating = Rating.find(params[:id])
+    rating.delete
+    redirect_to ratings_path
+  end
 end
