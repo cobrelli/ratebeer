@@ -3,4 +3,6 @@
 <%= form_tag sessions_path do %>
   <%= text_field_tag :username, params[:username] %>
   <%= submit_tag "Log in" %>
+
+  <p id="notice"><%= notice %></p>
 <% end %>
