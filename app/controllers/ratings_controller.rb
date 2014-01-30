@@ -19,10 +19,4 @@ class RatingsController < ApplicationController
     rating.delete
     redirect_to :back
   end
-
-  def create
-    rating = Rating.create params.require(:rating).permit(:score, :beer_id)
-    current_user.ratings << rating
-    redirect_to current_user
-  end
 end
