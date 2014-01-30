@@ -28,6 +28,7 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       if @membership.save
+        current_user.memberships << @membership
         format.html { redirect_to @membership, notice: 'Membership was successfully created.' }
         format.json { render action: 'show', status: :created, location: @membership }
       else
@@ -69,6 +70,7 @@ class MembershipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def membership_params
-      params[:membership]
+      #params[:membership]
+      params.require(:membership).permit(:user_id, :beer_club_id)
     end
 end
