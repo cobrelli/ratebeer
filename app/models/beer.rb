@@ -3,7 +3,7 @@ class Beer < ActiveRecord::Base
 
 	belongs_to :brewery
 	has_many :ratings, :dependent => :destroy
-	has_many :raters, -> { uniq }, through: :ratings, source: :user
+	has_many :raters, -> { uniq }, through: :ratings, source: :user, :dependent => :destroy
 
 
 	#validates :name, presence => true

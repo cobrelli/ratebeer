@@ -19,6 +19,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if not current_user == @user
+      return
+    end
   end
 
   # POST /users
@@ -54,10 +57,13 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
+    if current_user == @user
+      session[:user_id] = nil
+      @user.destroy 
+      respond_to do |format|
+        format.html { redirect_to users_url }
+        format.json { head :no_content }
+      end
     end
   end
 
