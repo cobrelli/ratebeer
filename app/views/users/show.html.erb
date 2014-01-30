@@ -12,12 +12,16 @@
 		<strong>ratings</strong>
 	</p>
 	
-	<% @user.ratings.each do |r| %>	
-		<p>
-			<%= r %>
-			<%= link_to 'delete', r, method: :delete, data: { confirm: 'Are you sure?' } %>
-		</p>
-	<% end %>
+	<ul>
+    <% @user.ratings.each do |rating| %>
+      <li> 
+        <%= rating %> 
+        <% if @user == current_user %>
+            <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %> 
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 <% end %>
 
 <% if not @user.beer_clubs.empty? %>
