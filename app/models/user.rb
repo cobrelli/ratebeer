@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  validates :password, :format => {:with => /(?=.*\d)(?=.+[A-Z])(?=.*[a-zA-Z]).{4,}/ }
+
   validates :username, uniqueness: true,
                        length: { minimum: 3, maximum: 15 }
 
