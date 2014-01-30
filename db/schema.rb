@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140130093848) do
     t.integer  "beer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|

@@ -1,9 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Username:</strong>
-  <%= @user.username %>
+  <strong><%= @user.username %></strong>
 </p>
+
+<p>has made <%= @user.ratings.count %> ratings</p>
+<p>with average of <%= @user.average_rating %></p>
+
+<% if not @user.ratings.nil? %>
+	<p>
+		<strong>ratings</strong>
+	</p>
+	
+	<% @user.ratings.each do |r| %>	
+		<p>
+			<%= r %>
+			<%= link_to 'delete', r, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</p>
+	<% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
