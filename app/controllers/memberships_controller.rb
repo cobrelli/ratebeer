@@ -26,16 +26,26 @@ class MembershipsController < ApplicationController
   def create
     @membership = Membership.new(membership_params)
 
-    respond_to do |format|
-      if @membership.save
-        current_user.memberships << @membership
-        format.html { redirect_to @membership, notice: 'Membership was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @membership }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @membership.errors, status: :unprocessable_entity }
-      end
+
+    if not Membership.where(user_id:current_user.id,beer_club_id:params[:membership][:beer_club_id]).empty?
+      redirect_to beer_club_path, notice: 'You already belong to that club.'
+    else
+    #if current_user.memberships.where(id: @membership.beer_club_id).empty? 
+      respond_to do |format|
+        if @membership.save
+          current_user.memberships << @membership
+          format.html { redirect_to beer_clubs_path, notice: 'Membership was successfully created.' }
+          #format.json { render action: 'show', status: :created, location: @membership }
+        else
+          format.html { redirect_to beer_clubs_path, notice: 'Membership creation failed.' }
+          #format.html { render action: 'new' }
+          #format.json { render json: @membership.errors, status: :unprocessable_entity }
+        end
+      end  
+    #else
+     # redirect_to beer_clubs_path, notice: 'Already a member of that club.'
     end
+
   end
 
   # PATCH/PUT /memberships/1
