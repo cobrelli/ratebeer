@@ -19,4 +19,13 @@ describe Beer do
   			expect(Beer.count).to eq(0)
 		end
 	end
+
+	describe "with style not set" do
+		let(:beer){ Beer.create name:"Esa" }
+
+		it "is not saved" do
+			expect(beer).not_to be_valid
+  			expect(Beer.count).to eq(0)
+		end
+	end
 end
