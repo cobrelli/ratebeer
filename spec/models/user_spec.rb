@@ -33,4 +33,22 @@ describe User do
       expect(user.average_rating).to eq("Beers have 2 ratings, average 15.0")
     end
   end
+
+  describe "with too short password" do
+  	let(:user){ User.create username:"Pekka", password:"Se1", password_confirmation:"Se1" }
+
+  	it "is not saved" do
+  		expect(user).not_to be_valid
+  		expect(User.count).to eq(0)
+  	end
+  end
+
+  describe "with password with only chars" do
+  	let(:user){ User.create username:"Pekka", password:"Secrettt", password_confirmation:"Secrettt" }
+
+  	it "is not saved" do
+  		expect(user).not_to be_valid
+  		expect(User.count).to eq(0)
+  	end
+  end
 end
