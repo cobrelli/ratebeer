@@ -3,7 +3,13 @@ source 'https://rubygems.org'
 gem 'byebug', group: [:development, :test]
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'rspec-rails', '~> 2.14.1'
-gem 'factory_girl_rails'
+#gem 'factory_girl_rails'
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'launchy'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
