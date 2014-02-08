@@ -23,4 +23,9 @@ class User < ActiveRecord::Base
   	ratings.group_by{|rating| rating.beer.send :style}.max_by{|_, rs| rs.map(&:score).inject(0.0, :+) / rs.size}.first
   end
 
+  def favorite_brewery
+  	return nil if ratings.empty?
+  	ratings.group_by{|rating| rating.beer.send :brewery}.max_by{|_, rs| rs.map(&:score).inject(0.0, :+) / rs.size}.first
+  end
+
 end
