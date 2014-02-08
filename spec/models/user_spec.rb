@@ -66,6 +66,18 @@ describe User do
 
   		expect(user.favorite_style).to eq(beer.style)
 	end  	
+
+	it "with multiple ratings returns right style" do
+		beer1 = FactoryGirl.create(:beer, name:"Laakeri", style:"Lager")
+		beer2 = FactoryGirl.create(:beer, name:"Stoutti", style:"Stout")
+		beer3 = FactoryGirl.create(:beer, name:"Laaker1", style:"Lager")
+
+		FactoryGirl.create(:rating, beer:beer1, score:10, user:user)
+		FactoryGirl.create(:rating, beer:beer2, score:15, user:user)
+		FactoryGirl.create(:rating, beer:beer3, score:30, user:user)
+
+		expect(user.favorite_style).to eq("Lager")
+	end
   end
 
   describe "favorite beer" do
