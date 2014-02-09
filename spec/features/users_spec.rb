@@ -59,3 +59,6 @@ describe "User" do
     expect(page).to have_content("favourite brewery: Supermesta")
   end
 end
+
+BeerClub
+BeerClubsController
