@@ -1,10 +1,15 @@
 language: ruby
-
 rvm:
- - 2.0.0
-
+- 2.0.0
 script:
- - bundle exec rake db:migrate --trace
- - RAILS_ENV=test bundle exec rake db:migrate --trace
- - bundle exec rake db:test:prepare
- - bundle exec rspec -fd spec/
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: hL1VZWBf2VkIHARke1vwBOeAEW33lsgzG+D4JUVzQfZuWju97Ked5U7nHw1nRaOc3KJg+TfjvivAhYixgKM/bZitOR2n57adCy0jweYC8hlFExc7znOX8D70gZ+XyiDX4VN0EJ1ey6SMy0ayv5RnUhfHExbsHTT+0SpHn4AhDSU=
+  app: shrouded-bayou-7090
+  on:
+    repo: cobrelli/ratebeer
