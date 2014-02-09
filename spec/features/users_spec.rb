@@ -34,5 +34,28 @@ describe "User" do
     }.to change{User.count}.by(1)
   end
 
+  it "favorite beer style is shown correctly" do
+    beer1 = FactoryGirl.create(:beer)
+    beer2 = FactoryGirl.create(:beer2)
+    FactoryGirl.create(:rating, user:User.first, beer:beer1, score:50)
+    FactoryGirl.create(:rating, user:User.first, beer:beer2, score:2)
 
+    visit user_path(User.first)
+
+    expect(page).to have_content("favourite beer style: Lager")
+  end
+
+  it "favorite brewery is shown correctly" do
+    brewery = FactoryGirl.create(:brewery, name:"Supermesta")
+    beer1 = FactoryGirl.create(:beer)
+    beer2 = FactoryGirl.create(:beer, brewery:brewery, name:"Best")
+    beer3 = FactoryGirl.create(:beer, brewery:brewery, name:"Best2")
+    FactoryGirl.create(:rating, user:User.first, beer:beer1)
+    FactoryGirl.create(:rating, user:User.first, beer:beer2, score:50)
+    FactoryGirl.create(:rating, user:User.first, beer:beer3, score:50)
+
+    visit user_path(User.first)
+
+    expect(page).to have_content("favourite brewery: Supermesta")
+  end
 end
