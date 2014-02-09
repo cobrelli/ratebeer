@@ -24,6 +24,18 @@ describe "Rating" do
     expect(beer1.ratings.count).to eq(1)
     #expect(beer1.average_rating).to eq(15.0)
     expect(beer1.average_rating).to eq("Beers have 1 rating, average 15.0")
+  end
 
+  it "ratings and total number of them is shown on index" do
+    FactoryGirl.create(:rating, user:User.first, beer:Beer.first)
+    FactoryGirl.create(:rating, user:User.first, beer:Beer.last)
+
+    visit ratings_path
+
+    puts page.html
+
+    expect(page).to have_content "Number of ratings 2"
+    expect(page).to have_content "iso 3 10 Pekka"
+    expect(page).to have_content "Karhu 10 Pekka"
   end
 end
