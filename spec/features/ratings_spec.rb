@@ -32,10 +32,24 @@ describe "Rating" do
 
     visit ratings_path
 
-    puts page.html
-
     expect(page).to have_content "Number of ratings 2"
     expect(page).to have_content "iso 3 10 Pekka"
     expect(page).to have_content "Karhu 10 Pekka"
   end
+
+
+    it "when signed in is shown only own ratings" do
+      wrongBeer = FactoryGirl.create(:beer, name:"paha")
+      wrongUser = FactoryGirl.create(:user, username:"esa")
+      wrongRating = FactoryGirl.create(:rating, user:wrongUser, beer:wrongBeer)
+      rating1 = FactoryGirl.create(:rating, user:user, beer:beer1)
+      rating2 = FactoryGirl.create(:rating, user:user, beer:beer2)
+
+      visit user_path(user)
+      
+      expect(page).to have_content(rating1)
+      expect(page).to have_content(rating2)
+      expect(user.ratings.count).to eq(2)
+      expect(page).not_to have_content(wrongRating)
+    end
 end
