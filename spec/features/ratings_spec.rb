@@ -42,6 +42,7 @@ describe "Rating" do
       wrongBeer = FactoryGirl.create(:beer, name:"paha")
       wrongUser = FactoryGirl.create(:user, username:"esa")
       wrongRating = FactoryGirl.create(:rating, user:wrongUser, beer:wrongBeer)
+      
       rating1 = FactoryGirl.create(:rating, user:user, beer:beer1)
       rating2 = FactoryGirl.create(:rating, user:user, beer:beer2)
 
@@ -51,5 +52,18 @@ describe "Rating" do
       expect(page).to have_content(rating2)
       expect(user.ratings.count).to eq(2)
       expect(page).not_to have_content(wrongRating)
+    end
+
+    it "when deleting a rating it is removed from db" do
+      rating1 = FactoryGirl.create(:rating, user:user, beer:beer1)
+      rating2 = FactoryGirl.create(:rating, user:user, beer:beer2)
+
+      visit user_path(user)
+
+      page.first(:link, "delete").click
+
+      expect(user.ratings.count).to eq(1)
+      expect(page).not_to have_content(rating1)
+      expect(page).to have_content(rating2)
     end
 end
