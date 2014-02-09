@@ -64,7 +64,7 @@ describe User do
   		beer = FactoryGirl.create(:beer)
   		FactoryGirl.create(:rating, beer:beer, user:user)
 
-  		expect(user.favorite_brewery).to eq(beer.brewery)
+  		expect(user.favorite_brewery).to eq(beer.brewery.name)
 	end 
 
 	it "with multiple ratings returns right brewery" do
@@ -79,7 +79,7 @@ describe User do
 		FactoryGirl.create(:rating, beer:beer2, score:15, user:user)
 		FactoryGirl.create(:rating, beer:beer3, score:30, user:user)
 
-		expect(user.favorite_brewery).to eq(brewery2)
+		expect(user.favorite_brewery).to eq(brewery2.name)
 	end
   end
 
