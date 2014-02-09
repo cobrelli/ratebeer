@@ -13,6 +13,8 @@ describe "beers page" do
 
 		before :each do
 			FactoryGirl.create(:brewery)
+			FactoryGirl.create(:user)
+    		sign_in username:"Pekka", password:"Foobar1"
 		end
 
 		it "should let add new beer with valid name" do
