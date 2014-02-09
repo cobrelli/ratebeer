@@ -13,3 +13,4 @@ deploy:
   app: shrouded-bayou-7090
   on:
     repo: cobrelli/ratebeer
+  run: "rake db:migrate"
