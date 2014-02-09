@@ -548,6 +548,7 @@
         1,
         1,
         1,
+        1,
         null,
         null,
         null,
@@ -640,6 +641,10 @@
         null,
         1,
         4,
+        null,
+        null,
+        1,
+        0,
         null,
         null
       ],
@@ -906,7 +911,7 @@
         1,
         1,
         1,
-        null,
+        1,
         null,
         null,
         null,
@@ -1015,6 +1020,7 @@
       "/Users/cobu/koulujutut/ratebeer/app/controllers/users_controller.rb": [
         1,
         1,
+        1,
         null,
         null,
         null,
@@ -1107,6 +1113,7 @@
         null
       ],
       "/Users/cobu/koulujutut/ratebeer/app/controllers/breweries_controller.rb": [
+        1,
         1,
         1,
         1,
@@ -1217,6 +1224,6 @@
         null
       ]
     },
-    "timestamp": 1391959954
+    "timestamp": 1391961170
   }
 }
