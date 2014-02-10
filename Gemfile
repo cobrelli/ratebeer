@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'byebug', group: [:development, :test]
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'rspec-rails', '~> 2.14.1'
+gem 'httparty'
+
 #gem 'factory_girl_rails'
 
 group :test do
