@@ -14,18 +14,18 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2014-02-13T19:54:10+02:00">2014-02-13T19:54:10+02:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2014-02-13T19:58:31+02:00">2014-02-13T19:58:31+02:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">86.41%</span></span>
+    (<span class="covered_percent"><span class="yellow">86.85%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.77
+         1.79
        </span>
     </span> hits/line)
   </h2>
@@ -33,8 +33,8 @@
   <div>
     <b>50</b> files in total.
     <b>677</b> relevant lines. 
-    <span class="green"><b>585</b> lines covered</span> and
-    <span class="red"><b>92</b> lines missed </span>
+    <span class="green"><b>588</b> lines covered</span> and
+    <span class="red"><b>89</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -57,7 +57,7 @@
         <td>10</td>
         <td>9</td>
         <td>1</td>
-        <td>20.9</td>
+        <td>21.1</td>
       </tr>
       
       <tr>
@@ -257,7 +257,7 @@
         <td>5</td>
         <td>5</td>
         <td>0</td>
-        <td>1.6</td>
+        <td>1.8</td>
       </tr>
       
       <tr>
@@ -417,7 +417,7 @@
         <td>23</td>
         <td>16</td>
         <td>7</td>
-        <td>1.8</td>
+        <td>2.1</td>
       </tr>
       
       <tr>
@@ -462,12 +462,12 @@
       
       <tr>
         <td class="strong"><a href="#75fe33034d995b11d78df66ecfa35fa713c7759a" class="src_link" title="spec/features/places_spec.rb">spec/features/places_spec.rb</a></td>
-        <td class="yellow strong">85.71 %</td>
+        <td class="green strong">100.0 %</td>
         <td>40</td>
         <td>21</td>
-        <td>18</td>
-        <td>3</td>
-        <td>0.9</td>
+        <td>21</td>
+        <td>0</td>
+        <td>1.0</td>
       </tr>
       
       <tr>
@@ -634,8 +634,8 @@
           <code class="ruby">  def current_user</code>
         </li>
       
-        <li class="covered" data-hits="121" data-linenumber="10">
-          <span class="hits">121</span>
+        <li class="covered" data-hits="123" data-linenumber="10">
+          <span class="hits">123</span>
           
           <code class="ruby">    return nil if session[:user_id].nil? </code>
         </li>
@@ -3886,8 +3886,8 @@
           <code class="ruby">  def self.rendered_fields</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="6">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="5" data-linenumber="6">
+          <span class="hits">5</span>
           
           <code class="ruby">    [:id, :name, :status, :street, :city, :zip, :country, :overall ]</code>
         </li>
@@ -5830,8 +5830,8 @@
           <code class="ruby">    places.inject([]) do | set, place |</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="19">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="8" data-linenumber="19">
+          <span class="hits">8</span>
           
           <code class="ruby">      set &lt;&lt; Place.new(place)</code>
         </li>
@@ -6821,11 +6821,11 @@
         <div class="source_table" id="75fe33034d995b11d78df66ecfa35fa713c7759a">
   <div class="header">
     <h3>spec/features/places_spec.rb</h3>
-    <h4><span class="yellow">85.71 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
       <b>21</b> relevant lines. 
-      <span class="green"><b>18</b> lines covered</span> and
-      <span class="red"><b>3</b> lines missed.</span>
+      <span class="green"><b>21</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -6865,7 +6865,7 @@
         <li class="never" data-hits="" data-linenumber="6">
           
           
-          <code class="ruby">        [ Place.new(:name =&gt; &quot;Oljenkorsi&quot;) ]</code>
+          <code class="ruby">        [ Place.new(:name =&gt; &quot;Oljenkorsi&quot;, :id =&gt; 1) ]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
@@ -6904,8 +6904,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="13">
-          
+        <li class="covered" data-hits="1" data-linenumber="13">
+          <span class="hits">1</span>
           
           <code class="ruby">    expect(page).to have_content &quot;Oljenkorsi&quot;</code>
         </li>
@@ -6937,7 +6937,7 @@
         <li class="never" data-hits="" data-linenumber="18">
           
           
-          <code class="ruby">        [ Place.new(:name =&gt; &quot;Oljenkorsi&quot;), Place.new(:name =&gt; &quot;Mesta&quot;) ]</code>
+          <code class="ruby">        [ Place.new(:name =&gt; &quot;Oljenkorsi&quot;, :id =&gt; 1), Place.new(:name =&gt; &quot;Mesta&quot;, :id =&gt; 2) ]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="19">
@@ -6976,14 +6976,14 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="25">
-          
+        <li class="covered" data-hits="1" data-linenumber="25">
+          <span class="hits">1</span>
           
           <code class="ruby">    expect(page).to have_content &quot;Oljenkorsi&quot;</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="26">
-          
+        <li class="covered" data-hits="1" data-linenumber="26">
+          <span class="hits">1</span>
           
           <code class="ruby">    expect(page).to have_content &quot;Mesta&quot;</code>
         </li>
