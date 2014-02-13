@@ -14,26 +14,26 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2014-02-13T15:09:19+02:00">2014-02-13T15:09:19+02:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2014-02-13T16:51:57+02:00">2014-02-13T16:51:57+02:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">86.82%</span></span>
+    (<span class="covered_percent"><span class="yellow">87.31%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.81
+         1.82
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>49</b> files in total.
-    <b>645</b> relevant lines. 
-    <span class="green"><b>560</b> lines covered</span> and
+    <b>670</b> relevant lines. 
+    <span class="green"><b>585</b> lines covered</span> and
     <span class="red"><b>85</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -403,11 +403,11 @@
       <tr>
         <td class="strong"><a href="#1532903ce36bad95c8f8adb9687276823ce03557" class="src_link" title="lib/beermapping_api.rb">lib/beermapping_api.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>19</td>
-        <td>11</td>
-        <td>11</td>
+        <td>26</td>
+        <td>15</td>
+        <td>15</td>
         <td>0</td>
-        <td>2.7</td>
+        <td>3.7</td>
       </tr>
       
       <tr>
@@ -493,9 +493,9 @@
       <tr>
         <td class="strong"><a href="#079704a4c0fed7f7773769bc115eb4961892ab5a" class="src_link" title="spec/lib/beermapping_api_spec.rb">spec/lib/beermapping_api_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>53</td>
-        <td>27</td>
-        <td>27</td>
+        <td>96</td>
+        <td>48</td>
+        <td>48</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -5625,8 +5625,8 @@
     <h3>lib/beermapping_api.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>11</b> relevant lines. 
-      <span class="green"><b>11</b> lines covered</span> and
+      <b>15</b> relevant lines. 
+      <span class="green"><b>15</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -5646,103 +5646,145 @@
           <code class="ruby">  def self.places_in(city)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="3">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="6" data-linenumber="3">
+          <span class="hits">6</span>
+          
+          <code class="ruby">    city = city.downcase</code>
+        </li>
+      
+        <li class="covered" data-hits="10" data-linenumber="4">
+          <span class="hits">10</span>
+          
+          <code class="ruby">    Rails.cache.fetch(city, :expires_in =&gt; 1.minute) { fetch_places_in(city) }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="5">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.fetch_places_in(city)</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="10">
+          <span class="hits">4</span>
           
           <code class="ruby">    url = &quot;http://beermapping.com/webservice/loccity/#{key}/&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="4">
+        <li class="never" data-hits="" data-linenumber="11">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="5">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="12">
+          <span class="hits">4</span>
           
           <code class="ruby">    response = HTTParty.get &quot;#{url}#{ERB::Util.url_encode(city)}&quot;</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="6">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="13">
+          <span class="hits">4</span>
           
           <code class="ruby">    places = response.parsed_response[&quot;bmp_locations&quot;][&quot;location&quot;]</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="7">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="8">
-          <span class="hits">3</span>
-          
-          <code class="ruby">    return [] if places.is_a?(Hash) and places[&#39;id&#39;].nil?</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="9">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="10">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    places = [places] if places.is_a?(Hash)</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="11">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    places.inject([]) do | set, place |</code>
-        </li>
-      
-        <li class="covered" data-hits="8" data-linenumber="12">
-          <span class="hits">8</span>
-          
-          <code class="ruby">      set &lt;&lt; Place.new(place)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="13">
-          
-          
-          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="15">
+        <li class="covered" data-hits="4" data-linenumber="15">
+          <span class="hits">4</span>
+          
+          <code class="ruby">    return [] if places.is_a?(Hash) and places[&#39;id&#39;].nil?</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="16">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="16">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def self.key</code>
-        </li>
-      
         <li class="covered" data-hits="3" data-linenumber="17">
           <span class="hits">3</span>
           
-          <code class="ruby">    &quot;bbf0dec4c8ddcd8b60d772cd2b1f56c0&quot;</code>
+          <code class="ruby">    places = [places] if places.is_a?(Hash)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="18">
+        <li class="covered" data-hits="3" data-linenumber="18">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    places.inject([]) do | set, place |</code>
+        </li>
+      
+        <li class="covered" data-hits="9" data-linenumber="19">
+          <span class="hits">9</span>
+          
+          <code class="ruby">      set &lt;&lt; Place.new(place)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="19">
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.key</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="24">
+          <span class="hits">4</span>
+          
+          <code class="ruby">    &quot;bbf0dec4c8ddcd8b60d772cd2b1f56c0&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="25">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="26">
           
           
           <code class="ruby">end</code>
@@ -7827,8 +7869,8 @@
     <h3>spec/lib/beermapping_api_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>27</b> relevant lines. 
-      <span class="green"><b>27</b> lines covered</span> and
+      <b>48</b> relevant lines. 
+      <span class="green"><b>48</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -8145,10 +8187,268 @@
         <li class="never" data-hits="" data-linenumber="52">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="53">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe &quot;in case of cache miss&quot; do</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="54">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="55">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    before :each do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="56">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      Rails.cache.clear</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="57">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="59">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it &quot;When HTTP GET returns one entry, it is parsed and returned&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="60">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      canned_answer = &lt;&lt;-END_OF_STRING</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="61">
+          
+          
+          <code class="ruby">&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39; ?&gt;&lt;bmp_locations&gt;&lt;location&gt;&lt;id&gt;13307&lt;/id&gt;&lt;name&gt;O&#39;Connell&#39;s Irish Bar&lt;/name&gt;&lt;status&gt;Beer Bar&lt;/status&gt;&lt;reviewlink&gt;http://beermapping.com/maps/reviews/reviews.php?locid=13307&lt;/reviewlink&gt;&lt;proxylink&gt;http://beermapping.com/maps/proxymaps.php?locid=13307&amp;amp;d=5&lt;/proxylink&gt;&lt;blogmap&gt;http://beermapping.com/maps/blogproxy.php?locid=13307&amp;amp;d=1&amp;amp;type=norm&lt;/blogmap&gt;&lt;street&gt;Rautatienkatu 24&lt;/street&gt;&lt;city&gt;Tampere&lt;/city&gt;&lt;state&gt;&lt;/state&gt;&lt;zip&gt;33100&lt;/zip&gt;&lt;country&gt;Finland&lt;/country&gt;&lt;phone&gt;35832227032&lt;/phone&gt;&lt;overall&gt;0&lt;/overall&gt;&lt;imagecount&gt;0&lt;/imagecount&gt;&lt;/location&gt;&lt;/bmp_locations&gt;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="62">
+          
+          
+          <code class="ruby">      END_OF_STRING</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="63">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="64">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      stub_request(:get, /.*tampere/).to_return(body: canned_answer, headers: {&#39;Content-Type&#39; =&gt; &quot;text/xml&quot;})</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="65">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="66">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      places = BeermappingApi.places_in(&quot;tampere&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="67">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="68">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(places.size).to eq(1)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="69">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      place = places.first</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="70">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(place.name).to eq(&quot;O&#39;Connell&#39;s Irish Bar&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="71">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(place.street).to eq(&quot;Rautatienkatu 24&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="72">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="73">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="75">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe &quot;in case of cache hit&quot; do</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="76">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="77">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it &quot;When one entry in cache, it is returned&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="78">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      canned_answer = &lt;&lt;-END_OF_STRING</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="79">
+          
+          
+          <code class="ruby">&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39; ?&gt;&lt;bmp_locations&gt;&lt;location&gt;&lt;id&gt;13307&lt;/id&gt;&lt;name&gt;O&#39;Connell&#39;s Irish Bar&lt;/name&gt;&lt;status&gt;Beer Bar&lt;/status&gt;&lt;reviewlink&gt;http://beermapping.com/maps/reviews/reviews.php?locid=13307&lt;/reviewlink&gt;&lt;proxylink&gt;http://beermapping.com/maps/proxymaps.php?locid=13307&amp;amp;d=5&lt;/proxylink&gt;&lt;blogmap&gt;http://beermapping.com/maps/blogproxy.php?locid=13307&amp;amp;d=1&amp;amp;type=norm&lt;/blogmap&gt;&lt;street&gt;Rautatienkatu 24&lt;/street&gt;&lt;city&gt;Tampere&lt;/city&gt;&lt;state&gt;&lt;/state&gt;&lt;zip&gt;33100&lt;/zip&gt;&lt;country&gt;Finland&lt;/country&gt;&lt;phone&gt;35832227032&lt;/phone&gt;&lt;overall&gt;0&lt;/overall&gt;&lt;imagecount&gt;0&lt;/imagecount&gt;&lt;/location&gt;&lt;/bmp_locations&gt;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="80">
+          
+          
+          <code class="ruby">      END_OF_STRING</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="81">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="82">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      stub_request(:get, /.*tampere/).to_return(body: canned_answer, headers: {&#39;Content-Type&#39; =&gt; &quot;text/xml&quot;})</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="83">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="84">
+          
+          
+          <code class="ruby">      # ensure that data found in cache</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="85">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      BeermappingApi.places_in(&quot;tampere&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="86">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="87">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      places = BeermappingApi.places_in(&quot;tampere&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="88">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="89">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(places.size).to eq(1)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="90">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      place = places.first</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="91">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(place.name).to eq(&quot;O&#39;Connell&#39;s Irish Bar&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="92">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(place.street).to eq(&quot;Rautatienkatu 24&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="93">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="94">
+          
+          
+          <code class="ruby">  end  </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="95">
+          
+          
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="53">
+        <li class="never" data-hits="" data-linenumber="96">
           
           
           <code class="ruby"></code>
