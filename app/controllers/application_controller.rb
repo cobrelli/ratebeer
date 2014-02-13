@@ -16,10 +16,10 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_user
-  	puts "--------------"
-  	puts current_user.admin?
-  	puts current_user.id
-  	puts "--------------"
+  	# puts "--------------"
+  	# puts current_user.admin?
+  	# puts current_user.id
+  	# puts "--------------"
     redirect_to root_url unless current_user.admin?
   end
 end
