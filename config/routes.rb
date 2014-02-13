@@ -9,7 +9,8 @@ Ratebeer::Application.routes.draw do
   root 'breweries#index'
   resources :sessions, only: [:new, :create]
 
-  get 'places', to: 'places#index'
+  resources :places, only:[:index, :show]
+  #get 'places', to: 'places#index'
   post 'places', to:'places#search'
 
   get 'signup', to: 'users#new'  
