@@ -3,7 +3,8 @@ require 'spec_helper'
 describe Beer do
   
 	describe "with set name and style" do
-		let(:beer){ Beer.create name:"Karhu III", style:"Lager" }
+		let(:style){ Style.create name:"Lager", description:"test" }
+		let(:beer){ Beer.create name:"Karhu III", style:style }
 
 		it "is saved" do
 			expect(beer).to be_valid
@@ -12,7 +13,8 @@ describe Beer do
 	end
 
 	describe "with name not set" do
-		let(:beer){ Beer.create style:"Esa" }
+		let(:style){ Style.create name:"Lager", description:"test" }
+		let(:beer){ Beer.create style:style }
 
 		it "is not saved" do
 			expect(beer).not_to be_valid

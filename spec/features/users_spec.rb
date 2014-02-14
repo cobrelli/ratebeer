@@ -35,6 +35,7 @@ describe "User" do
   end
 
   it "favorite beer style is shown correctly" do
+    #FactoryGirl.create(:style, name:"Lager")
     beer1 = FactoryGirl.create(:beer)
     beer2 = FactoryGirl.create(:beer2)
     FactoryGirl.create(:rating, user:User.first, beer:beer1, score:50)
@@ -42,7 +43,7 @@ describe "User" do
 
     visit user_path(User.first)
 
-    expect(page).to have_content("favourite beer style: Lager")
+    expect(page).to have_content("favourite beer style: testi")
   end
 
   it "favorite brewery is shown correctly" do
