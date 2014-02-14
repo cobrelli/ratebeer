@@ -1,4 +1,5 @@
 Ratebeer::Application.routes.draw do
+  resources :styles, :only => [:index, :show]
   resources :memberships
   resources :beer_clubs
   resources :users
