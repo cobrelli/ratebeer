@@ -10,6 +10,7 @@ gem 'jquery-turbolinks'
 #gem 'factory_girl_rails'
 
 group :test do
+  gem 'selenium-webdriver'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
