@@ -15,19 +15,42 @@ BREWERIES.show = function(){
 };
 
 BREWERIES.sort_by_name = function(){
-    BREWERIES.list.sort( function(a,b){
+    BREWERIES.list.sort(function(a,b){
         return a.name.toUpperCase().localeCompare(b.name.toUpperCase());
     });
 };
 
+BREWERIES.sort_by_year = function(){
+    BREWERIES.list.sort(function(a,b){
+        return a.year-b.year;
+    });
+};
 
+BREWERIES.sort_by_bcount = function(){
+    BREWERIES.list.sort(function(a,b){
+    	return a.count-b.count;
+    });
+};
 
 $(document).ready(function(){
-	$("#name").click(function(e){
+	$("#brewname").click(function(e){
 		BREWERIES.sort_by_name();
 		BREWERIES.show();
 		e.preventDefault();
 	});
+
+	$("#brewyear").click(function(e){
+		BREWERIES.sort_by_year();
+		BREWERIES.show();
+		e.preventDefault();
+	});
+
+	$("#brewbeers").click(function(e){
+		BREWERIES.sort_by_bcount();
+		BREWERIES.show();
+		e.preventDefault();
+	});
+
 	//console.log($("#beertable").length);
 	if ( $("#brewerytable").length>0 ) {
 		$.getJSON('breweries.json', function(breweries){
