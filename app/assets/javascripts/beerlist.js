@@ -34,9 +34,11 @@ BEERS.sort_by_brewery = function(){
 
 $(document).ready(function () {
     $("#name").click(function (e) {
+    	if ( $("#beertable").length>0 ) {
         BEERS.sort_by_name();
         BEERS.show();
         e.preventDefault();
+    };
     });
 
     $("#style").click(function (e) {
