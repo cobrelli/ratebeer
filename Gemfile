@@ -11,6 +11,7 @@ gem 'jquery-turbolinks'
 
 group :test do
   gem 'selenium-webdriver'
+  gem 'database_cleaner', '< 1.1.0'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
