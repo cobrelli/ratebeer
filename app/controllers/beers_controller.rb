@@ -18,6 +18,9 @@ class BeersController < ApplicationController
     end
   end
 
+  def nglist
+  end
+
   def list
   end
 
