@@ -55,4 +55,13 @@ describe "beerlist page" do
     find('table').find('tr:nth-child(3)').should have_content('Rauchbier')
     find('table').find('tr:nth-child(4)').should have_content('Weizen')
   end
+
+  it "shows beers ordered by brewery when brewery is clicked", js: true do
+    visit beerlist_path
+    click_link('Brewery')
+    #save_and_open_page
+    find('table').find('tr:nth-child(2)').should have_content('Ayinger')
+    find('table').find('tr:nth-child(3)').should have_content('Koff')
+    find('table').find('tr:nth-child(4)').should have_content('Schlenkerla')
+  end
 end
