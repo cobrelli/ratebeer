@@ -33,21 +33,19 @@ BEERS.sort_by_brewery = function(){
 };
 
 $(document).ready(function () {
-    $("#name").click(function (e) {
-    	if ( $("#beertable").length>0 ) {
+    $("#bname").click(function (e) {
         BEERS.sort_by_name();
         BEERS.show();
         e.preventDefault();
-    };
     });
 
-    $("#style").click(function (e) {
+    $("#bstyle").click(function (e) {
         BEERS.sort_by_style();
         BEERS.show();
         e.preventDefault();
     });
 
-    $("#brewery").click(function (e) {
+    $("#bbrewery").click(function (e) {
         BEERS.sort_by_brewery();
         BEERS.show();
         e.preventDefault();
