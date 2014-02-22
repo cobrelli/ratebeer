@@ -35,7 +35,15 @@ describe "beerlist page" do
 
   it "shows one known beer", js: true do
     visit beerlist_path
-    save_and_open_page
+    #save_and_open_page
     expect(page).to have_content "Nikolai"
+  end
+
+  it "shows many beers ordered by name", js: true do
+    visit beerlist_path
+    save_and_open_page
+    find('table').find('tr:nth-child(2)').should have_content('Fastenbier')
+    find('table').find('tr:nth-child(3)').should have_content('Lechte Weisse')
+    find('table').find('tr:nth-child(4)').should have_content('Nikolai')
   end
 end
